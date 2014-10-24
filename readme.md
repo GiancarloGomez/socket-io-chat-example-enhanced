@@ -1,4 +1,6 @@
-# Socket.IO Chat (Enhanced with SSL, Rooms and REST POINT)
+# Socket.IO Chat
+
+<strong>Enhanced with SSL, Rooms and REST POINT</strong>
 
 This sample app is based on the sample chat demo for socket.io found in the following repo
 
