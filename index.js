@@ -53,7 +53,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 // Routing
 app.use(express.static(__dirname + '/public'));
 
-// external messages
+// send a message view POST
 app.post('/push',function(req, res){
 
     // console.log("[200] " + req.method + " to " + req.url);
@@ -70,6 +70,22 @@ app.post('/push',function(req, res){
         res.json({'success':false});
     }
 
+});
+
+// return array of users connected
+app.get('/get-users',function(req,res){
+    var users = [];
+    for (var key in io.sockets.adapter.sids ){
+        var connectedClient = io.sockets.connected[key],
+            returnClient    = {'id':connectedClient.conn.id,'rooms':[],'username':connectedClient.username};
+
+        for (var room in connectedClient.rooms){
+            if (connectedClient.rooms[room] !== returnClient.id)
+                returnClient.rooms.push(connectedClient.rooms[room]);
+        }
+        users.push(returnClient);
+    }
+    res.json(users);
 });
 
 // Chatroom
