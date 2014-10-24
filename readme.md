@@ -1,4 +1,4 @@
-# Socket.IO Chat
+# Socket.IO Chat Enhanced
 
 <strong>Enhanced with SSL, Rooms and REST POINT</strong>
 
